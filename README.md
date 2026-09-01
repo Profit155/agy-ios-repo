@@ -8,7 +8,7 @@ directly from GitHub over HTTPS.
 No GitHub token is required. In NewTerm run:
 
 ```sh
-printf '%s\n' 'deb [arch=iphoneos-arm64 trusted=yes] https://raw.githubusercontent.com/Profit155/agy-ios-repo/main/ ./' > /tmp/agy.list
+printf '%s\n' 'deb [arch=iphoneos-arm64 trusted=yes] https://profit155.github.io/agy-ios-repo/ ./' > /tmp/agy.list
 sudo install -m 644 /tmp/agy.list /var/jb/etc/apt/sources.list.d/agy.list
 rm -f /tmp/agy.list
 
@@ -27,7 +27,7 @@ The same source will appear in Sileo after its sources are refreshed. It can
 also be added there directly with this URL:
 
 ```text
-https://raw.githubusercontent.com/Profit155/agy-ios-repo/main/
+https://profit155.github.io/agy-ios-repo/
 ```
 
 ## Publish a new package from Windows
