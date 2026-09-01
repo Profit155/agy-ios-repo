@@ -70,7 +70,7 @@ $releaseHeader = @(
     'Suite: stable'
     'Codename: stable'
     'Architectures: iphoneos-arm64'
-    'Description: Private AGY packages for rootless jailbroken iOS'
+    'Description: AGY packages for rootless jailbroken iOS'
 )
 [IO.File]::WriteAllText(
     $releasePath,
