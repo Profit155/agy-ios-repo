@@ -1,0 +1,21 @@
+Package: com.google.antigravity-cli.rootless
+Architecture: iphoneos-arm64
+Version: 1.1.22-7
+Priority: optional
+Section: Utilities
+Maintainer: local build
+Installed-Size: 175448
+Depends: firmware (>= 15.0), ldid, zsh, ca-certificates, uikittools
+Filename: debs/agy_1.1.22-7_iphoneos-arm64.deb
+Size: 49723430
+MD5sum: 48377f65c4277dfba44732a1afe0422c
+SHA1: a482941f80b381909e6b876b37e5269083e89ab8
+SHA256: ec60b0e695184eca1443eed641e133d2316cefd2bad86d17d0c1d19ebeb87c01
+SHA512: 6ad53b8f94b6a215118eaefd9b7750d3f7780cd147a2781af3bf4900f832b6948b4af9eef22ceb856060bdf16611e421d1ec938564e4ca2d75c6408f885084d3
+Description: Experimental Antigravity CLI port for rootless jailbroken iOS
+ Binary-transplants Google's official macOS arm64 AGY release to iOS, with
+ compatibility shims for desktop-only Darwin APIs. Device validation is still
+ required; this is not an official Google build.
+Name: AGY CLI (experimental rootless port)
+Author: Google
+

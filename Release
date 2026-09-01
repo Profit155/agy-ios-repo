@@ -1,0 +1,19 @@
+Origin: AGY iOS Port
+Label: AGY iOS Port
+Suite: stable
+Codename: stable
+Architectures: iphoneos-arm64
+Description: Private AGY packages for rootless jailbroken iOS
+Date: Tue, 01 Sep 2026 04:16:07 +0000
+MD5Sum:
+ ec8caa2be9094c4c1e906d1a484d069c              941 Packages
+ 5d429f453cf85af9275604467c2b0996              656 Packages.gz
+SHA1:
+ dd4279278c9bf62885af8a5ad0d766220738d6ae              941 Packages
+ cd38b73aa97c9a2824c48f0aa8207a6cb51f0ef3              656 Packages.gz
+SHA256:
+ 195d35225b538138753a0f87c4fc2b8c9dd3a308eae92fd8681e0ea8a985fbaa              941 Packages
+ f464df773a7d2553dac42be3ad29c56ad2c90cac2100fb22fb449955110d87ff              656 Packages.gz
+SHA512:
+ 6f27df0eb5c360e07b226784f646ba4894152004822663d665a5800e07e64d963cfe40544f670154958f54f010fe68311e64540c9e4c6f59ca73da55916ffdd6              941 Packages
+ 0e663e61f72f0b2138c65fd91fa0849302679c791ff08a5a0d9bd6e9bf27488dafcba8291e07d1bbe14876dab70ba604daefbfa4d759ef27ba617556d55a02c7              656 Packages.gz

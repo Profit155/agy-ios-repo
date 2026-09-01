@@ -1,0 +1,8 @@
+*.tmp
+*.bak
+*.token
+.env
+auth.conf
+agy-github.conf
+.DS_Store
+Thumbs.db
