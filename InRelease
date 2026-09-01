@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Origin: AGY iOS Port
+Label: AGY iOS Port
+Suite: stable
+Codename: stable
+Architectures: iphoneos-arm64
+Components:
+Description: AGY packages for rootless jailbroken iOS
+Date: Tue, 01 Sep 2026 13:21:23 +0000
+MD5Sum:
+ 4d38a0b88c4fc2eceb3edd80ed5e7c86             2823 Packages
+ ddb72b4d728a6805f51c60e2f6b92a4b             1047 Packages.gz
+SHA1:
+ 335f260c06d5e6e164008871d3f7c97e8c3fb619             2823 Packages
+ 36dbb2a42d9992ade14ca97f417dc0490977106b             1047 Packages.gz
+SHA256:
+ 191683e4c881042bce6f026d088d2184e836dae9e2fd37c2b317a4157ad4881e             2823 Packages
+ e81ce7bc933730c137d6552a45f81996e843435cb9a85b93c8d14ca6bc27f93e             1047 Packages.gz
+SHA512:
+ 7262fb1f32718d46ccf22c0451601695a499c2076cc3df4d35308f28cca8cee1d5d671ad5e71726f90ac5c88b515af5110a62a41ffd539d35f1c6fb597ceafc3             2823 Packages
+ 86a385ae9c548be4b61e1f8482e736b744d26be42db0aa52428dc8928fea58d9781f8568f03727731329b84c53eac05049d8a5c2295cb83eb9e78d96c2eee5d9             1047 Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCAAdFiEEHfBqFS7Evp2vLfMYC4BbDI1CBUEFAmqW0VQACgkQC4BbDI1C
+BUEsmQv/aHI6HLTq8ATO7Xon7WvKCAiyeoIuSkaNEo927Od1lfoWFEPFnND0RV6a
+5TTXoPkotqEGpBq89dOREJu8GN3e8UeE8BphEHgjv2Ti21bDuHtPSRhW2ylshmnI
+DpW8AATzhfqMXoYDNBHsJydiSEruas0NJpD583Hdl1Vay0xD7xqENdNvcWktUEk6
+47gwABLL/a5ZCMRmVcU+OE2P5ZHARvyTRSvPWR99McPhl5/aTKGx3MiBD8SQIgw2
+M/ciU1QhTd35g+GR6ZA6O9I+keWa6kI28BxdnGuq5o/1zdGuEkGbgi+LHRzDXMqM
+2yT5P5ztE0q7sKBKqM/bq6OzRWEHpZeexsJc7O2fo57Ul0bP117ZS+WCj6UZcf5P
+uwcTm1Ol+Ftjc2bUNsQxIA+K7KT0DOC4YiE0CC2S0xFCBUExPyNjknOrUWT5e4iF
+DGkHjSjrH1ST0AuRyP2gKHN3imWI95ekvPa1ECTj8Z3Ikvy0gmynQMw9PJpie4HV
+6ZYGQuY7
+=q1Gy
+-----END PGP SIGNATURE-----

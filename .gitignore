@@ -6,3 +6,4 @@ auth.conf
 agy-github.conf
 .DS_Store
 Thumbs.db
+.private/

@@ -1,0 +1,7 @@
+/InRelease -text
+/Release.gpg -text
+/Packages.gz -text
+/*.gpg -text
+/debs/*.deb -text
+/Release text eol=lf
+/Packages text eol=lf
