@@ -4,16 +4,20 @@ Suite: stable
 Codename: stable
 Architectures: iphoneos-arm64
 Description: Private AGY packages for rootless jailbroken iOS
-Date: Tue, 01 Sep 2026 04:16:07 +0000
+Date: Tue, 01 Sep 2026 04:28:21 +0000
 MD5Sum:
- ec8caa2be9094c4c1e906d1a484d069c              941 Packages
- 5d429f453cf85af9275604467c2b0996              656 Packages.gz
+ 5d8eb9ddd72ed1578d6538be928b5c72             1882 Packages
+ 039301e71d5cfdb4d443974b4678eea2              854 Packages.gz
+ 00d6b8217f8270e3136fbdfd5e524b0d              996 Release
 SHA1:
- dd4279278c9bf62885af8a5ad0d766220738d6ae              941 Packages
- cd38b73aa97c9a2824c48f0aa8207a6cb51f0ef3              656 Packages.gz
+ b0e6f5a53a5941a228afd1a89184cd0f0befda1f             1882 Packages
+ 3e8a563fd1897b56f0f4c9ba7667d8b9c75be595              854 Packages.gz
+ 2817519b93f4f4036dbbe682f757aed626192a8f              996 Release
 SHA256:
- 195d35225b538138753a0f87c4fc2b8c9dd3a308eae92fd8681e0ea8a985fbaa              941 Packages
- f464df773a7d2553dac42be3ad29c56ad2c90cac2100fb22fb449955110d87ff              656 Packages.gz
+ 1f510ff2fbd1df8d263f03d76314ae94cceee98612bf908211e4a1e7b5d138f6             1882 Packages
+ a52af2e86e2a4af0df728b8b232f71832246792197f928e9488c18de02e87ea3              854 Packages.gz
+ e971cbceea61271cce3c496490cd0f107b6f6e7606edf509cbbda94b12237f71              996 Release
 SHA512:
- 6f27df0eb5c360e07b226784f646ba4894152004822663d665a5800e07e64d963cfe40544f670154958f54f010fe68311e64540c9e4c6f59ca73da55916ffdd6              941 Packages
- 0e663e61f72f0b2138c65fd91fa0849302679c791ff08a5a0d9bd6e9bf27488dafcba8291e07d1bbe14876dab70ba604daefbfa4d759ef27ba617556d55a02c7              656 Packages.gz
+ 5d8f426d9c8480292ca1775e1615fff0bb622edccd007c38ffab518a62d41987be10c5add1fa1d4fa18590c8e8db79441b5597e99c9b27c214003dc8cb48d20f             1882 Packages
+ 65e4ae19c7bc661859a5f8fb60169118b3e0b122e48fb086d95691550450f62169ff883df34b14a4ebfd4baeac17cdfb9d91d71c04d12e9a0507796da2a5dc33              854 Packages.gz
+ 489e0c454950f9423f6d3210024f0841961f36c886c5457190d73df07bde08ea47e9f99c9dc9f70fb94bb37e7167fe9f6ddb82e28c2846b466b85570eaf8cf63              996 Release
