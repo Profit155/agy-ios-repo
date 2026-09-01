@@ -59,6 +59,9 @@ finally {
     $inputStream.Dispose()
 }
 
+if (Test-Path -LiteralPath $releasePath) {
+    Remove-Item -LiteralPath $releasePath -Force
+}
 $releaseIndex = @(& wsl.exe --cd $wslRepoRoot apt-ftparchive release .)
 if ($LASTEXITCODE -ne 0) {
     throw 'apt-ftparchive failed while generating Release.'
@@ -70,6 +73,7 @@ $releaseHeader = @(
     'Suite: stable'
     'Codename: stable'
     'Architectures: iphoneos-arm64'
+    'Components:'
     'Description: AGY packages for rootless jailbroken iOS'
 )
 [IO.File]::WriteAllText(
