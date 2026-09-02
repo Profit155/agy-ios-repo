@@ -2,7 +2,7 @@
 
 Run the **Antigravity CLI (`agy`) locally on a rootless jailbroken iPhone**.
 
-This is an unofficial, experimental compatibility port of AGY 1.1.22 for
+This is an unofficial, experimental compatibility port of AGY 1.1.24 for
 `iphoneos-arm64`. The agent, terminal tools,
 Python, file operations, and network requests execute from the iPhone.
 
@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.1.22-11` |
+| Port revision | `1.1.24-1` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -30,7 +30,7 @@ Python, file operations, and network requests execute from the iPhone.
 - Image generation
 - Signed APT updates without a GitHub token
 - Adaptive TUI rendering: 4 FPS idle and about 11.4 FPS during active input
-- 24.4 steady idle wakeups/s and 0.12% of one core on the verified device
+- 23.7 steady idle wakeups/s and 0.14% of one core on the verified device
 
 ## Install with Sileo
 
@@ -71,7 +71,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.1.22-11_iphoneos-arm64.deb
+sudo dpkg -i agy_1.1.24-1_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -79,7 +79,7 @@ agy --version
 Expected version output:
 
 ```text
-1.1.22
+1.1.24
 ```
 
 ## Update remotely
@@ -108,17 +108,18 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 
 ## Power behavior
 
-Revision `1.1.22-11` uses a 4 FPS safety ticker when idle and coalesces active
+Revision `1.1.24-1` retains the 4 FPS safety ticker and coalesces active
 redraws at about 11.4 FPS. It also batches the desktop 62.5 Hz streaming-text
 animation to one update per second at the same aggregate reveal speed and runs
-the Go scheduler on one P by default. Steady authenticated idle dropped from
-63.1 wakeups/s in revision 10 (about 479/s upstream) to 24.4/s, with 0.12% of
-one CPU core. A complete 1,200-word response used 11,143 wakeups over 45 seconds,
-instead of exhausting iOS's 45,000-wakeup reporting budget in 33 seconds.
+the Go scheduler on one P by default. On AGY 1.1.24, steady authenticated idle
+measured 23.7 wakeups/s and 0.14% of one core. A complete 45.26-second response
+used 14,721 wakeups (325.2/s), stayed below the process's 45,000-wakeup report
+budget for the run, and returned to the prompt.
 
-Fast continuous typing remains an upstream hot path: the measured 20-character
-burst used 1,927 wakeups while retaining 21 ms median / 103 ms p95 character
-latency. Terminal tools, model networking, and web requests remain unthrottled.
+Fast continuous typing remains an upstream hot path because
+`PromptModel.Update` repeats Unicode wrapping per key. An unsafe binary shortcut
+was rejected after improving wakeups by only 3.3%. Terminal tools, model
+networking, and web requests remain unthrottled.
 
 ## Repository signing key
 
