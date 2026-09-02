@@ -5,7 +5,7 @@ Codename: stable
 Architectures: iphoneos-arm64
 Components:
 Description: AGY packages for rootless jailbroken iOS
-Date: Tue, 01 Sep 2026 13:21:23 +0000
+Date: Wed, 02 Sep 2026 00:36:02 +0000
 MD5Sum:
  4d38a0b88c4fc2eceb3edd80ed5e7c86             2823 Packages
  ddb72b4d728a6805f51c60e2f6b92a4b             1047 Packages.gz

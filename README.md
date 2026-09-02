@@ -1,16 +1,63 @@
-# AGY APT source
+# AGY for iOS Jailbreak
 
-Signed flat APT repository for the rootless `iphoneos-arm64` AGY package,
-served directly from GitHub over HTTPS. The repository signing fingerprint is
-`1DF0 6A15 2EC4 BE9D AF2D F318 0B80 5B0C 8D42 0541`.
+Run the **Antigravity CLI (`agy`) locally on a rootless jailbroken iPhone**.
 
-## Add the source on the iPhone
+This is an unofficial, experimental compatibility port of AGY 1.1.22 for
+`iphoneos-arm64`. It is not a remote controller: the agent, terminal tools,
+Python, file operations, and network requests execute from the iPhone.
 
-No GitHub token is required. Package revision `1.1.22-9` and later installs the
-repository public key automatically. For the initial bootstrap in NewTerm run:
+> [!IMPORTANT]
+> This project is not affiliated with or supported by Google. AGY and
+> Antigravity are Google products. The upstream implementation is proprietary;
+> this repository distributes an experimental compatibility package, not an
+> official iOS release.
+
+## Verified device
+
+| Component | Verified configuration |
+| --- | --- |
+| Device | iPhone X (`iPhone10,3`, A11) |
+| iOS | 16.7.11 |
+| Jailbreak | Dopamine, rootless |
+| Package | `com.google.antigravity-cli.rootless` |
+| Port revision | `1.1.22-9` |
+| Architecture | `iphoneos-arm64` |
+
+## What works
+
+- Interactive TUI and Google-account authentication
+- Gemini, Claude, and GPT-OSS model routes
+- Terminal commands, Python, stdout/stderr, exit codes, and cancellation
+- Background commands and repeated process execution
+- File reading, writing, replacement, directory listing, and search fallbacks
+- Unicode paths and filenames containing spaces
+- DNS, HTTPS/TLS, `search_web`, and `read_url_content`
+- JSON, stream-JSON, JSON Schema, conversation resume, and subagents
+- Image generation
+- Signed APT updates without a GitHub token
+
+The terminal harness was stress-tested with 20 separate process launches in
+one turn and a fresh command afterward. The previous `failed to get executable
+path` and `EMFILE` failures did not recur.
+
+## Install with Sileo
+
+Add this source:
+
+```text
+https://profit155.github.io/agy-ios-repo/
+```
+
+Refresh sources, search for **AGY CLI**, and install
+`com.google.antigravity-cli.rootless`.
+
+For a first-time command-line bootstrap, an unsigned trust exception is needed
+only until revision `1.1.22-9` installs the repository public key:
 
 ```sh
-printf '%s\n' 'deb [arch=iphoneos-arm64 trusted=yes] https://profit155.github.io/agy-ios-repo/ ./' > /tmp/agy.list
+printf '%s\n' \
+  'deb [arch=iphoneos-arm64 trusted=yes] https://profit155.github.io/agy-ios-repo/ ./' \
+  >/tmp/agy.list
 sudo install -m 644 /tmp/agy.list /var/jb/etc/apt/sources.list.d/agy.list
 rm -f /tmp/agy.list
 
@@ -18,39 +65,70 @@ sudo apt update
 sudo apt install com.google.antigravity-cli.rootless
 ```
 
-After `1.1.22-9` is installed, remove `trusted=yes` from the source. Future
-refreshes are authenticated by `InRelease` and the installed public key at
-`/var/jb/etc/apt/trusted.gpg.d/agy-ios-repo.gpg`.
+After installing `1.1.22-9`, remove `trusted=yes`. Future repository metadata
+is authenticated using signed `InRelease` and the key installed at:
 
-After this one-time setup, upgrades need no USB connection:
+```text
+/var/jb/etc/apt/trusted.gpg.d/agy-ios-repo.gpg
+```
+
+## Direct DEB installation
+
+Download the package from the
+[latest GitHub release](https://github.com/Profit155/agy-ios-repo/releases/latest),
+copy it to the iPhone, then run:
+
+```sh
+sudo dpkg -i agy_1.1.22-9_iphoneos-arm64.deb
+sudo apt-get -f install
+agy --version
+```
+
+Expected version output:
+
+```text
+1.1.22
+```
+
+## Update remotely
+
+After the source is installed, the phone no longer needs a USB connection:
 
 ```sh
 sudo apt update
 sudo apt install --only-upgrade com.google.antigravity-cli.rootless
 ```
 
-The same source will appear in Sileo after its sources are refreshed. It can
-also be added there directly with this URL:
+The desktop self-updater is disabled because it would replace the patched and
+signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
+
+## Known limitations
+
+- `--sandbox` deliberately fails closed with exit code 78. AGY's upstream
+  sandbox requires macOS `/usr/bin/sandbox-exec`, which does not exist on iOS.
+- Desktop browser/CDP and notebook tool families are unavailable locally.
+  Cloud web search and URL reading still work.
+- FSEvents is unavailable; AGY uses fallback file scanning.
+- The bundled macOS ripgrep cannot run on iOS; in-process/`grep` fallbacks work.
+- Voice capture and clipboard-media integration are not verified.
+- The headless init event may advertise upstream desktop tools that are not
+  registered in the active iOS agent environment.
+
+## Repository signing key
+
+Fingerprint:
 
 ```text
-https://profit155.github.io/agy-ios-repo/
+1DF0 6A15 2EC4 BE9D AF2D F318 0B80 5B0C 8D42 0541
 ```
 
-## Publish a new package from Windows
+Public key: [`agy-ios-repo-key.gpg`](./agy-ios-repo-key.gpg)
 
-Generate the patched DEB in `agy-ios-port`, then run:
+Checksums: [`SHA256SUMS`](./SHA256SUMS)
 
-```powershell
-cd C:\Users\User\Desktop\jail\agy-ios-repo
-.\Publish-Package.ps1 -DebPath '..\agy-ios-port\dist\agy_1.1.22-9_iphoneos-arm64.deb'
-git add Packages Packages.gz Release InRelease Release.gpg agy-ios-repo-key.* debs
-git commit -m 'Publish AGY 1.1.22-9'
-git push
-```
+## Русский
 
-The signing script reads the private key only from
-`%USERPROFILE%\.agy-ios-repo\gnupg` (or `AGY_REPO_GNUPGHOME`). Never add that
-directory or an exported private key to this repository.
-
-APT chooses the highest Debian package version listed in `Packages`, so later
-revisions can coexist in `debs/`.
+Это неофициальный порт AGY 1.1.22 для rootless-jailbreak. Он действительно
+работает локально на iPhone, а не управляет агентом на другом компьютере.
+Проверенная конфигурация — iPhone X, iOS 16.7.11, Dopamine. Для установки
+добавьте репозиторий в Sileo или скачайте DEB из последнего GitHub Release.
