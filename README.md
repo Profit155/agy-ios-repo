@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.1.22-9` |
+| Port revision | `1.1.22-10` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -29,6 +29,7 @@ Python, file operations, and network requests execute from the iPhone.
 - JSON, stream-JSON, JSON Schema, conversation resume, and subagents
 - Image generation
 - Signed APT updates without a GitHub token
+- iOS-safe TUI rendering at 10 FPS: 63.1 steady wakeups/s on the verified device
 
 ## Install with Sileo
 
@@ -55,8 +56,8 @@ sudo apt update
 sudo apt install com.google.antigravity-cli.rootless
 ```
 
-After installing `1.1.22-9`, remove `trusted=yes`. Future repository metadata
-is authenticated using signed `InRelease` and the key installed at:
+After installing `1.1.22-9` or newer, remove `trusted=yes`. Future repository
+metadata is authenticated using signed `InRelease` and the key installed at:
 
 ```text
 /var/jb/etc/apt/trusted.gpg.d/agy-ios-repo.gpg
@@ -69,7 +70,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.1.22-9_iphoneos-arm64.deb
+sudo dpkg -i agy_1.1.22-10_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -103,6 +104,16 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 - Voice capture and clipboard-media integration are not verified.
 - The headless init event may advertise upstream desktop tools that are not
   registered in the active iOS agent environment.
+
+## Power behavior
+
+Revision `1.1.22-10` changes Bubble Tea's desktop renderer default from 60 FPS
+to 10 FPS. Before the patch, the authenticated welcome screen accumulated about
+479 interrupt wakeups/s and iOS reports recorded peaks of 1,477 and 1,683/s,
+against a 150/s resource limit. The patched steady-state measurement was 63.1
+wakeups/s with about 0.42% of one CPU core, and a 90-second device test created
+no new `wakeups_resource` report. Agent networking and terminal-tool execution
+remain unthrottled.
 
 ## Repository signing key
 
