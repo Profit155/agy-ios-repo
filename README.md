@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.1.22-10` |
+| Port revision | `1.1.22-11` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -29,7 +29,8 @@ Python, file operations, and network requests execute from the iPhone.
 - JSON, stream-JSON, JSON Schema, conversation resume, and subagents
 - Image generation
 - Signed APT updates without a GitHub token
-- iOS-safe TUI rendering at 10 FPS: 63.1 steady wakeups/s on the verified device
+- Adaptive TUI rendering: 4 FPS idle and about 11.4 FPS during active input
+- 24.4 steady idle wakeups/s and 0.12% of one core on the verified device
 
 ## Install with Sileo
 
@@ -70,7 +71,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.1.22-10_iphoneos-arm64.deb
+sudo dpkg -i agy_1.1.22-11_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -107,13 +108,17 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 
 ## Power behavior
 
-Revision `1.1.22-10` changes Bubble Tea's desktop renderer default from 60 FPS
-to 10 FPS. Before the patch, the authenticated welcome screen accumulated about
-479 interrupt wakeups/s and iOS reports recorded peaks of 1,477 and 1,683/s,
-against a 150/s resource limit. The patched steady-state measurement was 63.1
-wakeups/s with about 0.42% of one CPU core, and a 90-second device test created
-no new `wakeups_resource` report. Agent networking and terminal-tool execution
-remain unthrottled.
+Revision `1.1.22-11` uses a 4 FPS safety ticker when idle and coalesces active
+redraws at about 11.4 FPS. It also batches the desktop 62.5 Hz streaming-text
+animation to one update per second at the same aggregate reveal speed and runs
+the Go scheduler on one P by default. Steady authenticated idle dropped from
+63.1 wakeups/s in revision 10 (about 479/s upstream) to 24.4/s, with 0.12% of
+one CPU core. A complete 1,200-word response used 11,143 wakeups over 45 seconds,
+instead of exhausting iOS's 45,000-wakeup reporting budget in 33 seconds.
+
+Fast continuous typing remains an upstream hot path: the measured 20-character
+burst used 1,927 wakeups while retaining 21 ms median / 103 ms p95 character
+latency. Terminal tools, model networking, and web requests remain unthrottled.
 
 ## Repository signing key
 
