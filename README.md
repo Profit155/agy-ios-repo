@@ -3,14 +3,8 @@
 Run the **Antigravity CLI (`agy`) locally on a rootless jailbroken iPhone**.
 
 This is an unofficial, experimental compatibility port of AGY 1.1.22 for
-`iphoneos-arm64`. It is not a remote controller: the agent, terminal tools,
+`iphoneos-arm64`. The agent, terminal tools,
 Python, file operations, and network requests execute from the iPhone.
-
-> [!IMPORTANT]
-> This project is not affiliated with or supported by Google. AGY and
-> Antigravity are Google products. The upstream implementation is proprietary;
-> this repository distributes an experimental compatibility package, not an
-> official iOS release.
 
 ## Verified device
 
@@ -35,10 +29,6 @@ Python, file operations, and network requests execute from the iPhone.
 - JSON, stream-JSON, JSON Schema, conversation resume, and subagents
 - Image generation
 - Signed APT updates without a GitHub token
-
-The terminal harness was stress-tested with 20 separate process launches in
-one turn and a fresh command afterward. The previous `failed to get executable
-path` and `EMFILE` failures did not recur.
 
 ## Install with Sileo
 
@@ -125,10 +115,3 @@ Fingerprint:
 Public key: [`agy-ios-repo-key.gpg`](./agy-ios-repo-key.gpg)
 
 Checksums: [`SHA256SUMS`](./SHA256SUMS)
-
-## Русский
-
-Это неофициальный порт AGY 1.1.22 для rootless-jailbreak. Он действительно
-работает локально на iPhone, а не управляет агентом на другом компьютере.
-Проверенная конфигурация — iPhone X, iOS 16.7.11, Dopamine. Для установки
-добавьте репозиторий в Sileo или скачайте DEB из последнего GitHub Release.
