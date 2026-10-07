@@ -2,7 +2,7 @@
 
 Run the **Antigravity CLI (`agy`) locally on a rootless jailbroken iPhone**.
 
-This is an unofficial, experimental compatibility port of AGY 1.2.12 for
+This is an unofficial, experimental compatibility port of AGY 1.3.0 for
 `iphoneos-arm64`. The agent, terminal tools,
 Python, file operations, and network requests execute from the iPhone.
 
@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.2.12-1` |
+| Port revision | `1.3.0-1` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -30,7 +30,9 @@ Python, file operations, and network requests execute from the iPhone.
 - Image generation
 - Signed APT updates without a GitHub token
 - Original upstream text animation and TUI rendering
-- Measured 248.1 idle wakeups/s and 289.1 wakeups/s during one model response
+
+The capability list includes checks from earlier port revisions. See the
+[1.3.0-1 release notes](./RELEASE_NOTES_1.3.0-1.md) for the exact current checks.
 
 ## Install with Sileo
 
@@ -71,7 +73,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.2.12-1_iphoneos-arm64.deb
+sudo dpkg -i agy_1.3.0-1_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -79,7 +81,7 @@ agy --version
 Expected version output:
 
 ```text
-1.2.12
+1.3.0
 ```
 
 ## Update remotely
@@ -108,14 +110,15 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 
 ## Power behavior
 
-Revision `1.2.12-1` restores the original upstream text animation and TUI
-rendering to address delayed or missing text reported with the earlier custom
-throttling. The Go scheduler still defaults to one P. On the verified iPhone X,
-idle measured 248.1 wakeups/s (0.55% of one core); one complete 45.46-second
-model response measured 289.1 wakeups/s (33.87% of one core). These are
-wakeups, not watts. The higher idle rate compared with `1.1.24-1` (23.7/s)
-is the power cost of restoring upstream animation. Generation measurements
-used different workloads and should not be treated as a direct speed comparison.
+Revision `1.3.0-1` keeps the original upstream text animation and TUI rendering
+restored in `1.2.12-1` after the earlier custom throttling produced delayed or
+missing text. The Go scheduler defaults to one P. On a 50×21 SSH PTY on the
+verified iPhone X, settled idle measured 250.1 wakeups/s (0.82% of one core),
+with zero terminal output over 20.26 seconds. A 45.36-second response interval
+measured 445.8 wakeups/s (18.99% of one core), including model wait and the idle
+tail after completion. These are wakeups, not watts, and are not a controlled
+comparison with the prior workload/model. The idle rate remains much higher
+than the older throttled `1.1.24-1` package (23.7/s).
 
 ## Repository signing key
 

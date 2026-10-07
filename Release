@@ -5,16 +5,16 @@ Codename: stable
 Architectures: iphoneos-arm64
 Components:
 Description: AGY packages for rootless jailbroken iOS
-Date: Tue, 29 Sep 2026 02:53:42 +0000
+Date: Wed, 07 Oct 2026 02:24:15 +0000
 MD5Sum:
- 2547be1fe062d83994d3c99ae993d8a0             6631 Packages
- 14c9515eea2265192180cbd1762b7954             1871 Packages.gz
+ 23ca4b76dee1efa30b0e02025033a7f0             7590 Packages
+ 2fcc4d6e078ce2779f450b0d5db938d5             2079 Packages.gz
 SHA1:
- 7e514c765e590c23690460cfcdb1c5a82f1508e1             6631 Packages
- 94af51360e2f991a7dd6c8ecae827e286967f1cc             1871 Packages.gz
+ 597cdde40694461d7b5cbcf06c12cb13626cff46             7590 Packages
+ 0a586f74c1f083eb81cd28e98cf453cfa845ad73             2079 Packages.gz
 SHA256:
- 483337222496d870d61c25598f7e03f435a2862044153ae3d9dca053976184df             6631 Packages
- 987d64be38fdf3514671781e7719ae3ed4054d6594724677f364ee8fe6e5c2e2             1871 Packages.gz
+ c2742317cf8f7bf154fb916d22eed555c87322190aecdab8dc412b4812781f53             7590 Packages
+ 661d1fa0477064e4796c1429eb829fe6f63221b6c66e5fb1efae69a229e284ae             2079 Packages.gz
 SHA512:
- bf42cb49df7e7704ffb0d9fccedc6b210d21c1abcf4be673d259003eaec8abc78b74687c744a26026cbdd91c430d10d40f0273051ec8a8d2b2b81c48ccb1787f             6631 Packages
- 283f3520e00bb90402b129eb5bd22476221002a2e4bd01c4434fbe99bd06b8f9aaa80f00f95dd06e42e91f6227af4f31a506ce57d5d7bd755f8084eda9db922b             1871 Packages.gz
+ 216017f2a97d29d0a12e75d00fb9ec1103214b38dfcfacbd8d1146ed0e1f609ff14cc72d01e823d7d1472c6298a8385593e6b03aedbe654b3c114d0d17df6da5             7590 Packages
+ 1cd23ef0122d93b514730cf3dd6112a39e643a91b25b8132fedf3ce17956ee84354bb21445de41b37d5a207951c033f250af41a49cc8f3da6de948f98c1d18a8             2079 Packages.gz
