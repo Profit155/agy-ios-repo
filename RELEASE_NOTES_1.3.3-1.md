@@ -6,7 +6,7 @@ Unofficial port of [upstream AGY 1.3.3](https://github.com/google-antigravity/an
 
 - Rebased framework paths, shell descriptors, executable-path fallback, signing, and rootless packaging onto the verified official macOS arm64 binary.
 - Rewrote 1,441 unsupported RCpc instructions and 59 dot-product instructions for A11.
-- Relocated and opcode-checked all nine error-producing direct/inlined `os.Executable` sites.
+- Relocated and opcode-checked the nine existing direct/inlined `os.Executable` fallback sites.
 - Preserved upstream TUI and streaming-text animation; no custom FPS throttle or text batching is enabled.
 - Preserved `GOMAXPROCS=1`, disabled desktop auto-updates, sandbox fail-closed behavior, and signed APT updates.
 - Older packages remain available for rollback.
@@ -22,6 +22,7 @@ Unofficial port of [upstream AGY 1.3.3](https://github.com/google-antigravity/an
 - A long Russian answer streamed on a 50x21 SSH PTY and returned to the input prompt.
 - Unsupported `--sandbox` was rejected with exit 78.
 - Auto-updater log confirmed it was disabled; no test AGY process or new AGY crash/wakeups report remained.
+- After publication, the phone accepted the signed APT refresh without a trust exception; the repository candidate is `1.3.3-1`.
 
 Settled idle measured 247.5 wakeups/s, 1.28% of one core, and 128.05 MB footprint over 20.30 seconds, with zero terminal output. A 45.31-second response interval measured 480.3 wakeups/s, 27.01% of one core, and 183.38 MB footprint, including model waiting. These are not controlled version comparisons, and wakeups are not watts. The port still has a high wakeup rate; the upstream timer/output fixes do not establish a major battery-efficiency gain for normal TUI use.
 
