@@ -8,30 +8,30 @@ Codename: stable
 Architectures: iphoneos-arm64
 Components:
 Description: AGY packages for rootless jailbroken iOS
-Date: Sun, 25 Oct 2026 11:54:23 +0000
+Date: Sun, 25 Oct 2026 16:53:10 +0000
 MD5Sum:
- 947205baf768d9432cfb26706b6d2bca             9508 Packages
- 1fc7a3ede7c89cb8c31d6cdaadbdbfe5             2485 Packages.gz
+ 6d02f5d3181e5afb75e796cdfd931af1            10476 Packages
+ 809f8051137c44a362974dde4e8d4984             2687 Packages.gz
 SHA1:
- d028a8e9d46eea472b3dcbe01f8de58c5713cb1c             9508 Packages
- dd95186dfa583fe49b1232797d4cd18183b1beea             2485 Packages.gz
+ 284ed200cb11e8b4aac74d3db4716585ed013042            10476 Packages
+ 77ffff5e54afce051ccc8853aaa2a1c57471ac9b             2687 Packages.gz
 SHA256:
- 11c2f8c43d9d9b7d13efbd0d71c724fb6eb0679c45dd6240efbdc168a01ffaf9             9508 Packages
- 77d5316438dc585a4065a0c233093bd87418dc33b37a539e24b97a5ac67b974c             2485 Packages.gz
+ 2d3f7f1d58d14eadc8d938728c4dac7443107c0e85b8fb4231fc07c831cd7c90            10476 Packages
+ da2d22e0d28e626615aa307ce9879612b46f301d7da554d188a054042f086521             2687 Packages.gz
 SHA512:
- d037e94b0cc506e41e1417483f965812f90e65e2b59edbb4ac3f9f3dafe623b050433bc32a0b0c8c514540cd625608512013899f6ff927b0dfa65059ef087ff6             9508 Packages
- a1be758a9c8affc2f79ae9239704adb107f8ef10050852ed145c121615cdcec90526fe00ebb0cd261a3514587d9b2451c31b1dde00692afce83b03cf823feb92             2485 Packages.gz
+ 1be8a380effa01110507c37399eb67e4322ef83649d0462010b88bec0272ed6339db26939469be0e12fbfc9b8ec5933c46ff91d5018c535b4d8371aa73c1ae31            10476 Packages
+ e35927aefbb348def26faf1d3fbf3ea89aab9e55eb3dabcc9c106c0b7277ba082b9ce66b4810d42372feb0112503b36f346f837c2fbd23c671eb2df014773493             2687 Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCAAdFiEEHfBqFS7Evp2vLfMYC4BbDI1CBUEFAmrd7e8ACgkQC4BbDI1C
-BUEjkgwApn9ZlGKamFCNT4nbGCWSCyjpdITwbC8MrVlosJXznLi+sWSxNnM0ke4S
-l3hJrZ7evJzoCmnN2cPg+RC2t4kxgbRIT7dUBRzFjjYI+OVM9cRne/elZw47Yl+a
-Apta8pZd5CMZCrKeIi/1e34uip4UNa2qifhSIF0ta2schAq+1+Rn387x+r/vcsi7
-vXlyVBL+deX507zWcaVS9l8pAQmYxZPUcKB0kbw0RHcxu6YtgU3Wm8SYqGu4jt70
-rw8O1tDF7bBbzwSdEoHW0ky3iKE/9qQ4jahKytslw41DJElqn0wQxdK+xHRNa3zJ
-ObXiYN+Z9KjqfmU0TYCbHVLkg1QoLbGZ3SI+LXKRuSw+P6y889DjD6D5MtpnoiAw
-BMyrlyUVx6614mCDk96ORHBmlnOp2baR1YZWtDX+QxZtRmTT6E2jIKaoADSUBZIc
-vC1EQTJyUK7GBMUTZWXtjGli7SAt3KC03lxUcipVMihqs9Rl0uymoF4vRyOEAj7R
-B44vRwCX
-=poqA
+iQGzBAEBCAAdFiEEHfBqFS7Evp2vLfMYC4BbDI1CBUEFAmreM/YACgkQC4BbDI1C
+BUEvpgv/cizweTUWS0VWWCgTHIQxNJ7mfWPg3PgAt890dpzMR6JOphCWeEsylUZW
+ALie2icXADX3LJ1cuozqD7D4p9uZ1GKzxkkCTuWxmgGxBAbSLnsDzzE2IVRFZK8X
+OoPKL+kq7Val4H9kuC0VDzGlGGK0YWGyj/mSylHuO1ISk8hZHInIDkxGmQFht8Bh
+BgmfKLsHGv5MOoO019GudloQTnsPKlFfVr1Mhn0g0+juQzdD1+gSQ61QF46t76m/
+i0D45jgAzptag3BSx69tNjwRfDOWiKMmMsoj6qTzrr+l9IemOE2QhW5tgmJMg4H5
+cRpeNy5i0L1i7mIYlZ+jlIkhaHF4h/aqIeE7t0UC71OhMApbT8KE37IFQB3HeTyw
+ru6d0c4OKqySGfbi5SNIWZ86bmx1TDSj8KLY2wt0LheDDi29QdNsLOGbOVfb8Grc
+W2bAjt51L9YVgN+fyw4OzsOc+XvV3pA5KjfSZa2XmEo+k76CQDMPo+WPKcxPYIjK
+Sma02lcF
+=99/0
 -----END PGP SIGNATURE-----

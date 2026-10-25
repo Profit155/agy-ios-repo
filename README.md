@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.4.7-1` |
+| Port revision | `1.4.7-2` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -25,14 +25,15 @@ Python, file operations, and network requests execute from the iPhone.
 - Background commands and repeated process execution
 - File reading, writing, replacement, directory listing, and search fallbacks
 - Unicode paths and filenames containing spaces
-- DNS, HTTPS/TLS, `search_web`, and URL fetching through terminal fallback
+- DNS, HTTPS/TLS, `search_web`, and optional local MCP URL reading
 - JSON, stream-JSON, JSON Schema, conversation resume, and subagents
 - Image generation
 - Signed APT updates without a GitHub token
 - Original upstream text animation and TUI rendering
 
 The capability list includes checks from earlier port revisions. See the
-[1.4.7-1 release notes](./RELEASE_NOTES_1.4.7-1.md) for the exact current checks.
+[1.4.7-2 release notes](./RELEASE_NOTES_1.4.7-2.md) for the current URL-reader checks
+and [1.4.7-1](./RELEASE_NOTES_1.4.7-1.md) for the underlying port validation.
 
 ## Install with Sileo
 
@@ -73,7 +74,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.4.7-1_iphoneos-arm64.deb
+sudo dpkg -i agy_1.4.7-2_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -103,8 +104,9 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 - Desktop browser/CDP and notebook tool families are unavailable locally.
   Cloud web search and terminal HTTPS still work.
 - Native `read_url_content` is advertised in init but was not callable by the
-  tested 1.4.7 harness. URL fetching through Python/terminal HTTPS is verified;
-  the previous successful native-reader check must not be treated as current.
+  tested 1.4.7 harness. Revision 1.4.7-2 bundles an optional local MCP replacement;
+  enable it with `agy mcp add --type stdio ios-web /var/jb/usr/bin/python3 /var/jb/usr/share/agy/url_reader.py`.
+  This is a separate tool, not a repair of the built-in reader.
 - FSEvents is unavailable; AGY uses fallback file scanning.
 - The bundled macOS ripgrep cannot run on iOS; in-process/`grep` fallbacks work.
 - Voice capture and clipboard-media integration are not verified.
