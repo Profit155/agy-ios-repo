@@ -2,7 +2,7 @@
 
 Run the **Antigravity CLI (`agy`) locally on a rootless jailbroken iPhone**.
 
-This is an unofficial, experimental compatibility port of AGY 1.3.3 for
+This is an unofficial, experimental compatibility port of AGY 1.4.7 for
 `iphoneos-arm64`. The agent, terminal tools,
 Python, file operations, and network requests execute from the iPhone.
 
@@ -14,7 +14,7 @@ Python, file operations, and network requests execute from the iPhone.
 | iOS | 16.7.11 |
 | Jailbreak | Dopamine, rootless |
 | Package | `com.google.antigravity-cli.rootless` |
-| Port revision | `1.3.3-1` |
+| Port revision | `1.4.7-1` |
 | Architecture | `iphoneos-arm64` |
 
 ## What works
@@ -25,14 +25,14 @@ Python, file operations, and network requests execute from the iPhone.
 - Background commands and repeated process execution
 - File reading, writing, replacement, directory listing, and search fallbacks
 - Unicode paths and filenames containing spaces
-- DNS, HTTPS/TLS, `search_web`, and `read_url_content`
+- DNS, HTTPS/TLS, `search_web`, and URL fetching through terminal fallback
 - JSON, stream-JSON, JSON Schema, conversation resume, and subagents
 - Image generation
 - Signed APT updates without a GitHub token
 - Original upstream text animation and TUI rendering
 
 The capability list includes checks from earlier port revisions. See the
-[1.3.3-1 release notes](./RELEASE_NOTES_1.3.3-1.md) for the exact current checks.
+[1.4.7-1 release notes](./RELEASE_NOTES_1.4.7-1.md) for the exact current checks.
 
 ## Install with Sileo
 
@@ -73,7 +73,7 @@ Download the package from the
 copy it to the iPhone, then run:
 
 ```sh
-sudo dpkg -i agy_1.3.3-1_iphoneos-arm64.deb
+sudo dpkg -i agy_1.4.7-1_iphoneos-arm64.deb
 sudo apt-get -f install
 agy --version
 ```
@@ -81,7 +81,7 @@ agy --version
 Expected version output:
 
 ```text
-1.3.3
+1.4.7
 ```
 
 ## Update remotely
@@ -101,7 +101,10 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 - `--sandbox` deliberately fails closed with exit code 78. AGY's upstream
   sandbox requires macOS `/usr/bin/sandbox-exec`, which does not exist on iOS.
 - Desktop browser/CDP and notebook tool families are unavailable locally.
-  Cloud web search and URL reading still work.
+  Cloud web search and terminal HTTPS still work.
+- Native `read_url_content` is advertised in init but was not callable by the
+  tested 1.4.7 harness. URL fetching through Python/terminal HTTPS is verified;
+  the previous successful native-reader check must not be treated as current.
 - FSEvents is unavailable; AGY uses fallback file scanning.
 - The bundled macOS ripgrep cannot run on iOS; in-process/`grep` fallbacks work.
 - Voice capture and clipboard-media integration are not verified.
@@ -110,15 +113,24 @@ signed iOS executable. Always update through Sileo/APT or a newer rootless DEB.
 
 ## Power behavior
 
-Revision `1.3.3-1` keeps the original upstream text animation and TUI rendering
-restored in `1.2.12-1` after the earlier custom throttling produced delayed or
-missing text. The Go scheduler defaults to one P. On a 50×21 SSH PTY on the
-verified iPhone X, settled idle measured 247.5 wakeups/s (1.28% of one core),
-with zero terminal output over 20.30 seconds. A 45.31-second response interval
-measured 480.3 wakeups/s (27.01% of one core), including model waiting.
-These are wakeups, not watts, and are not a controlled comparison with the
-prior workload/model. No major efficiency gain is established; idle remains much higher
-than the older throttled `1.1.24-1` package (23.7/s).
+Revision `1.4.7-1` keeps the original upstream text animation and TUI rendering;
+custom FPS/text batching remains disabled. The Go scheduler defaults to one P.
+Same-day settled-idle spot checks on the verified iPhone X, using a 50x21 SSH
+PTY and zero terminal output, measured:
+
+| Version | Wakeups/s | CPU, one core | Sample |
+| --- | ---: | ---: | ---: |
+| 1.3.3-1, before upgrade | 245.8 | 1.28% | 20.31 s |
+| 1.4.7-1 | 16.7 | 0.10% | 20.28 s |
+
+Idle wakeups decreased by about 93% in these samples. This is consistent with
+upstream's idle rendering changes, but is not a battery-life multiplier or a
+controlled response-generation benchmark. Wakeups are not watts.
+
+An active 45.31-second thinking/wait interval measured 394.2 wakeups/s and
+5.09% of one core. The long answer was still in progress and the probe canceled
+it; this is not a completed-response comparison. A separate short Russian
+answer streamed completely and returned to input on the same terminal.
 
 ## Repository signing key
 
